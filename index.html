@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <title>chatter|app</title>
 
-    <!-- embed the roboto font. This needs to go above your css -->
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
 
-    <!-- embed external css -->
     <link rel="stylesheet" href="css/style.css" />
 
-    <!-- #6 embed #jquery -->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
-    <!-- #6 #external #action-->
     <script src="js/script.js"></script>
+
+    <!--Font Awesome -->
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"/>
+
+    <script src="js/channels.js"></script>
 </head>
 <body>
 
@@ -22,61 +23,46 @@
 <div id="channels">
 
     <!-- APP BAR for APP TITLE -->
-    <h1 id="left-app-bar"> <!-- #5 added id for main app bar-->
+    <h1 id="left-app-bar"> 
         <img src="http://ip.lfe.mw.tum.de/sections/moocus.png" alt="Moocus, the chatty duck!" style="height: 56px;">
         chatter|app
     </h1>
 
     <!-- CHANNELS -->
     <ul>
-        <!-- #6 #channels #click calls our switchChannel with the corresponding name as an argument -->
-        <li onclick="switchChannel('#Yummy')">
+         <li onclick="switchChannel(yummy)">
             #Yummy
-            <!-- #5 #channels #icons now grouped in .channel-meta span -->
             <span class="channel-meta">
-                <img src="http://ip.lfe.mw.tum.de/sections/star-o.png" alt="not starred">
-                <!-- #5 #channels #icons now with chevron -->
-                <img src="http://ip.lfe.mw.tum.de/sections/chevron-right.png" alt="select">
+                    <i class="far fa-star"></i>
+                    <i class="fas fa-chevron-right"></i>
             </span>
         </li>
-        <!-- #6 #channels #click calls our switchChannel with the corresponding name as an argument -->
-        <li class="selected" onclick="switchChannel('#SevenContinents')">
+        <li class="selected" onclick="switchChannel(sevencontinents)">
             #SevenContinents
-            <!-- #5 #channels #icons now grouped in .channel-meta span -->
             <span class="channel-meta">
-                <img src="http://ip.lfe.mw.tum.de/sections/star.png" alt="starred">
-                <!-- #5 #channels #icons now with chevron -->
-                <img src="http://ip.lfe.mw.tum.de/sections/chevron-right.png" alt="select">
-            </span>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-chevron-right"></i>
+         </span>
         </li>
-        <!-- #6 #channels #click calls our switchChannel with the corresponding name as an argument -->
-        <li onclick="switchChannel('#KillerApp')">
+        <li onclick="switchChannel(killerapp)">
             #KillerApp
-            <!-- #5 #channels #icons now grouped in .channel-meta span -->
             <span class="channel-meta">
-                <img src="http://ip.lfe.mw.tum.de/sections/star-o.png" alt="not starred">
-                <!-- #5 #channels #icons now with chevron -->
-                <img src="http://ip.lfe.mw.tum.de/sections/chevron-right.png" alt="select">
+                    <i class="far fa-star"></i>
+                    <i class="fas fa-chevron-right"></i>
             </span>
         </li>
-        <!-- #6 #channels #click calls our switchChannel with the corresponding name as an argument -->
-        <li onclick="switchChannel('#FirstPersonOnMars')">
+        <li onclick="switchChannel(firstpersononmars)">
             #FirstPersonOnMars
-            <!-- #5 #channels #icons now grouped in .channel-meta span -->
             <span class="channel-meta">
-                <img src="http://ip.lfe.mw.tum.de/sections/star.png" alt="starred">
-                <!-- #5 #channels #icons now with chevron -->
-                <img src="http://ip.lfe.mw.tum.de/sections/chevron-right.png" alt="select">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-chevron-right"></i>
             </span>
         </li>
-        <!-- #6 #channels #click calls our switchChannel with the corresponding name as an argument -->
-        <li onclick="switchChannel('#Octoberfest')">
+        <li onclick="switchChannel(octoberfest)">
             #Octoberfest
-            <!-- #5 #channels #icons now grouped in .channel-meta span -->
             <span class="channel-meta">
-                <img src="http://ip.lfe.mw.tum.de/sections/star-o.png" alt="not starred">
-                <!-- #5 #channels #icons now with chevron -->
-                <img src="http://ip.lfe.mw.tum.de/sections/chevron-right.png" alt="select">
+                    <i class="far fa-star"></i>
+                    <i class="fas fa-chevron-right"></i>
             </span>
         </li>
 
@@ -84,16 +70,14 @@
 
     <!-- TAB BAR -->
     <div id="tab-bar">
-        <!-- #6 #taptab buttons are getting ids with #hyphens and a #change listener calling selectTab.
-             Pass the #argument to select Tab -->
         <button class="selected" id="tab-new" onclick="selectTab('#tab-new')">
-            <img src="http://ip.lfe.mw.tum.de/sections/lightbulb-o.png" alt="Bulb"> New
+                <i class="far fa-lightbulb"></i> New
         </button>
         <button id="tab-trending" onclick="selectTab('#tab-trending')">
-            <img src="http://ip.lfe.mw.tum.de/sections/fire.png" alt="Hot"> Trending
+                <i class="fas fa-fire"></i> Trending
         </button>
         <button id="tab-favorites" onclick="selectTab('#tab-favorites')">
-            <img src="http://ip.lfe.mw.tum.de/sections/star.png" alt="Star"> Favorites
+                <i class="fas fa-star"></i> Favorites
         </button>
     </div>
 </div>
@@ -102,15 +86,12 @@
 
     <!-- APP BAR for CHANNEL TITLE -->
     <h1>
-        <!-- #6 #channels #switcher needs to identify the channel name, so let's give it an ID -->
         <span id="channel-name">#SevenContinents</span>
-        <!-- #6 #channels #location also needs an id -->
         <small id="channel-location">by <strong>cheeses.yard.applies</strong></small>
-        <!-- #6 #liking channels requires a #filled star / with its #click listener -->
-        <img id="channel-star" src="http://ip.lfe.mw.tum.de/sections/star.png" alt="Favourite" onclick="star()">
+        <i class="fas fa-star" onclick="star()"></i> 
     </h1>
 
-    <!-- #5 #messages are now wrapped in a div to #scroll properly */ -->
+    <!-- #5 #messages  -->
     <div id="messages">
 
         <div class="message own">
@@ -134,21 +115,7 @@
             <button>+5 min.</button>
         </div>
 
-        <div class="message">
-            <h3><a href="http://w3w.co/driveway.helper.magazine"
-                   target="_blank"><strong>driveway.helper.magazine</strong></a>
-                Wed, June 20th, 14:02 <em>7 min. left</em></h3>
-            <p>Eu sou um Cariocas.</p>
-            <button>+5 min.</button>
-        </div>
-
-        <div class="message">
-            <h3><a href="http://w3w.co/escapes.pitch.saucepan"
-                   target="_blank"><strong>escapes.pitch.saucepan</strong></a>
-                Wed, June 20th, 14:07 <em>14 min. left</em></h3>
-            <p>Greetings from the western cape!</p>
-            <button>+5 min.</button>
-        </div>
+        
 
         <div class="message">
             <h3><a href="http://w3w.co/meanings.identity.pays"
@@ -158,11 +125,17 @@
             <button>+5 min.</button>
         </div>
 
+        <div class="message">
+            <h3><a href=":createdBy:" target="_blank"><strong>:createdBy:</strong></a>
+                :createdOn: <em>:expiresIn: min. left</em></h3>
+            <p>:text:</p>
+            <button>+5 min.</button>
+        </div>
     </div>
 
-    <!-- #5 #smileys #insert the chat-bar -->
-    <div id="chat-bar"> <!-- #6 #smile #show the menu on click -->
-        <button id="emojis-button" onclick="toggleEmojis()"><img src="http://ip.lfe.mw.tum.de/sections/smile-o.png" alt="Smiley"></button>
+    <!-- #5 #smileys -->
+    <div id="chat-bar"> 
+        <button id="emojis-button" onclick="toggleEmojis()"><i class="far fa-smile"></i></button>
         <div id="emojis">&#x1F601; &#x1F602; &#x1F603; &#x1F604; &#x1F605; &#x1F606; &#x1F607;</div>
     </div>
 </div>
